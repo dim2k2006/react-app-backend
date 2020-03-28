@@ -9,6 +9,8 @@ server.use(middlewares);
 // To handle POST, PUT and PATCH you need to use a body-parser
 server.use(jsonServer.bodyParser);
 
+const port = process.env.PORT || 4000;
+
 const players = [
   {
     id: 0,
@@ -168,6 +170,6 @@ server.use((req, res, next) => {
   next();
 });
 
-server.listen(3003, () => {
-  console.log('JSON Server is running at 3003');
+server.listen(port, () => {
+  console.log(`JSON Server is running at ${port}`);
 });
