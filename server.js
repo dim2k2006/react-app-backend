@@ -60,7 +60,7 @@ const players = [
 const authenticate = (req, res) => {
   const { username } = req.body;
   const { password } = req.body;
-  const player = players.find((player) => player.username === username);
+  const player = players.find((p) => p.username === username);
   if (player && player.password === password) {
     const response = { ...player };
     delete response.password;
@@ -127,12 +127,13 @@ const updatePlayer = (req, res) => {
     players[playerIndex] = newPlayer;
     const response = { ...newPlayer };
     delete response.password;
+
     res.status(200).json({
       status: 'SUCCESS',
       response,
     });
   } else {
-    res.status(200).json({
+    res.status(422).json({
       status: 'FAILURE',
       response: {
         errorKey: 'PLAYER_NOT_FOUND',
@@ -167,7 +168,7 @@ server.use((req, res, next) => {
     }
   }
   // Continue to JSON Server router
-  next();
+  return next();
 });
 
 server.listen(port, () => {
