@@ -144,6 +144,15 @@ const updatePlayer = (req, res) => {
 };
 
 server.use((req, res, next) => {
+  if (req.method === 'GET') {
+    if (req.path === '/players') {
+      res.status(200).json({
+        status: 'SUCCESS',
+        response: players,
+      });
+    }
+  }
+
   if (req.method === 'POST') {
     if (req.path === '/authenticate') {
       return authenticate(req, res);
