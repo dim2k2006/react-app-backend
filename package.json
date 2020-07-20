@@ -12,7 +12,7 @@
     "@babel/cli": "^7.7.5",
     "@babel/core": "^7.7.5",
     "@babel/node": "^7.7.4",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "json-server": "^0.16.1"
   },
   "devDependencies": {
